@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <center><h1>Temperature convertor</h1></center>
+    <article>  
+
+        
+        <div class="input">
+            <label for="temp">Enter Temperature: </label>
+            <input type="text" name="temp" id="temp" placeholder="Temperature">
+        </div>
+      
+        <br>
+        <div class="convert">
+            <label for="convertfrom">From:</label>
+            <select name="convertfrom" id="convertfrom">
+                <option value="celsius">Celsius</option>
+                <option value="fahrenheit">Fahrenheit</option>
+                <option value="kelvin">Kelvin</option>
+            </select>
+            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+            <label for="convertto">To:</label>
+            <select name="convertto" id="convertto">
+                <option value="celsius">Celsius</option>
+                <option value="fahrenheit">Fahrenheit</option>
+                <option value="kelvin">Kelvin</option>
+            </select>
+        </div>
+       <br>
+        <div id="result"></div>
+        <br>
+        <button type="submit" onclick="convert()">Convert</button>
+    </article>
+<script>
+    function convert()
+    {
+        var x=Number(document.getElementById("temp").value);
+        if(isNaN(x))
+        {
+          alert("The value must be a number");
+        }
+        else
+        {
+            var from=document.getElementById("convertfrom").value;
+            var to=document.getElementById("convertto").value;
+            if(from=="celsius")
+            {
+                if(to=="fahrenheit")
+                {
+                    var out=(x*9/5)+32;
+                    // alert(out);
+                    document.getElementById("result").innerHTML="Result : "+out+ " °F";
+                }
+                else if(to=="kelvin")
+                {
+                    var out=x+273.15;
+                    // alert(out);
+                    document.getElementById("result").innerHTML="Result : "+out+" K";
+                }
+                else
+                {
+                    document.getElementById("result").innerHTML="Result : "+x+" °C";
+                }
+            }
+            else if(from=="fahrenheit")
+            {
+                if(to=="celsius")
+                {
+                    var out=(x-32)*5/9;
+                    // alert(out);
+                    document.getElementById("result").innerHTML="Result : "+out+" °C";
+                }
+                else if(to=="kelvin")
+                {
+                    var out=(x-32) * 5/9 + 273.15;
+                    // alert(out);
+                    document.getElementById("result").innerHTML="Result : "+out+" K";
+                }
+                else
+                {
+                    document.getElementById("result").innerHTML="Result : "+x+" °F";
+                }
+            }
+            else
+            {
+                if(to=="fahrenheit")
+                {
+                    var out=(x -273.15) * 9/5 + 32 ;
+                    // alert(out);
+                    document.getElementById("result").innerHTML="Result : "+out+" °F";
+                }
+                else if(to=="celsius")
+                {
+                    var out=x-273.15;
+                    // alert(out);
+                    document.getElementById("result").innerHTML="Result : "+out+" °C";
+                }
+                else
+                {
+                    document.getElementById("result").innerHTML="Result : "+x+" K";
+                }
+            }
+            
+        }
+
+
+    }
+</script>
+</body>
+</html>
